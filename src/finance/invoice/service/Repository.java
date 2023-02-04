@@ -8,6 +8,8 @@ public interface Repository {
 		return MySqlDB.getInstance();
 	}
 
-	void add(Items items);
+	void addTableFinance(Items items);
+
+	void addTableType();
 
 }

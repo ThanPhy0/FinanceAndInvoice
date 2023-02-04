@@ -1,22 +1,16 @@
 package finance.invoice.view;
 
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.function.Consumer;
 
 import finance.invoice.entity.Items;
 import finance.invoice.service.MySqlDB;
 import finance.invoice.service.Repository;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class AddView implements Initializable {
 
@@ -40,7 +34,6 @@ public class AddView implements Initializable {
 	@FXML
 	private TextField custPaid;
 
-	private Consumer<Items> saveHandler;
 	private Items items;
 	private Repository repo;
 
@@ -62,9 +55,7 @@ public class AddView implements Initializable {
 		items.setRate(Integer.parseInt(rate.getText()));
 		items.setTotal(300);
 		items.setPaid(Integer.parseInt(custPaid.getText()));
-		repo.add(items);
-//		saveHandler.accept(items);
-
+		repo.addTableFinance(items);
 	}
 
 	public void validation() {
@@ -78,22 +69,4 @@ public class AddView implements Initializable {
 			System.out.println("insert customer paid ammount");
 		}
 	}
-
-	public void showForm(Consumer<Items> saveHandler) {
-		try {
-			FXMLLoader loader = new FXMLLoader(AddView.class.getResource("AddView.fxml"));
-			Parent root = loader.load();
-
-			AddView controller = loader.getController();
-			controller.saveHandler = saveHandler;
-			Stage stage = new Stage();
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
 }
