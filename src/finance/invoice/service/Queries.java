@@ -5,5 +5,5 @@ public class Queries {
 	public static final String User = "thanphyo";
 	public static final String Pass = "271999than";
 
-	public static final String Insert = "INSERT INTO finance(date, name, burma, cmee, cp, rate, total) VALUES (?,?,?,?,?,?,?)";
+	public static final String Insert = "INSERT INTO finance(i_date, i_name, rate, total, paid) VALUES (?,?,?,?,?)";
 }

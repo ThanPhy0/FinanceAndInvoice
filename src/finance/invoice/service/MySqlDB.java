@@ -29,11 +29,9 @@ public class MySqlDB implements Repository {
 			PreparedStatement prep = con.prepareStatement(Queries.Insert, Statement.RETURN_GENERATED_KEYS);
 			prep.setDate(1, Date.valueOf(items.getDate()));
 			prep.setString(2, items.getName());
-			prep.setInt(3, items.getBurma());
-			prep.setInt(4, items.getCmee());
-			prep.setInt(5, items.getCp());
-			prep.setInt(6, items.getRate());
-			prep.setInt(7, items.getTotal());
+			prep.setInt(3, items.getRate());
+			prep.setInt(4, items.getTotal());
+			prep.setInt(5, items.getPaid());
 			prep.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

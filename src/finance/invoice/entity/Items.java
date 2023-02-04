@@ -20,6 +20,7 @@ public class Items {
 	private int cp;
 	private int rate;
 	private int total;
+	private int paid;
 
 	public int getId() {
 		return id;
@@ -83,6 +84,14 @@ public class Items {
 
 	public void setTotal(int total) {
 		this.total = total;
+	}
+
+	public int getPaid() {
+		return paid;
+	}
+
+	public void setPaid(int paid) {
+		this.paid = paid;
 	}
 
 }
