@@ -1,6 +1,9 @@
 package finance.invoice.service;
 
-import finance.invoice.entity.Items;
+import java.sql.ResultSet;
+
+import finance.invoice.entity.Chicken;
+import finance.invoice.entity.Customer;
 
 public interface Repository {
 
@@ -8,8 +11,13 @@ public interface Repository {
 		return MySqlDB.getInstance();
 	}
 
-	void addTableFinance(Items items);
+	// CustomerService
+	void addCustomer(Customer customer);
 
-	void addTableType();
+	// ChickenService
+	void addChicken(Chicken chicken);
+
+	// Join CustomerServiceTable & ChickenServiceTable
+	void getBothTable(ResultSet rs);
 
 }

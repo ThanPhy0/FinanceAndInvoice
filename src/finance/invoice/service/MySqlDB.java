@@ -2,13 +2,17 @@ package finance.invoice.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import finance.invoice.entity.Items;
+import finance.invoice.entity.Chicken;
+import finance.invoice.entity.Customer;
 
 public class MySqlDB implements Repository {
 
 	private static Repository Repo = new MySqlDB();
+
+	Connection con;
 
 	public static Repository getInstance() {
 		return Repo;
@@ -19,13 +23,12 @@ public class MySqlDB implements Repository {
 	}
 
 	@Override
-	public void addTableFinance(Items items) {
+	public void addCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		Connection con;
-		AddTables addTables = new AddTables();
+		CustomerService cs = new CustomerService();
 		try {
 			con = getConnection();
-			addTables.addFinance(con, items);
+			cs.add(con, customer);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,9 +37,22 @@ public class MySqlDB implements Repository {
 	}
 
 	@Override
-	public void addTableType() {
+	public void addChicken(Chicken chicken) {
 		// TODO Auto-generated method stub
+		ChickenService ck = new ChickenService();
+		try {
+			con = getConnection();
+			ck.add(con, chicken);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
+	@Override
+	public void getBothTable(ResultSet rs) {
+		// TODO Auto-generated method stub
+
+	}
 }

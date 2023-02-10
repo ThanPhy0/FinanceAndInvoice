@@ -4,7 +4,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-import finance.invoice.entity.Items;
+import finance.invoice.entity.Chicken;
+import finance.invoice.entity.Customer;
 import finance.invoice.service.MySqlDB;
 import finance.invoice.service.Repository;
 import javafx.fxml.FXML;
@@ -34,7 +35,8 @@ public class AddView implements Initializable {
 	@FXML
 	private TextField custPaid;
 
-	private Items items;
+	private Customer customer;
+	private Chicken chicken;
 	private Repository repo;
 
 	@Override
@@ -47,15 +49,26 @@ public class AddView implements Initializable {
 
 	public void addNew() {
 		validation();
-		if (items == null)
-			items = new Items();
+		if (customer == null)
+			customer = new Customer();
 
-		items.setDate(LocalDate.now());
-		items.setName(cusName.getText());
-		items.setRate(Integer.parseInt(rate.getText()));
-		items.setTotal(300);
-		items.setPaid(Integer.parseInt(custPaid.getText()));
-		repo.addTableFinance(items);
+		if (chicken == null) {
+			chicken = new Chicken();
+		}
+
+		customer.setDate(LocalDate.now());
+		customer.setName(cusName.getText());
+
+		chicken.setBurma(Integer.parseInt(cBM.getText()));
+		chicken.setCmee(Integer.parseInt(cCmee.getText()));
+		chicken.setCp(Integer.parseInt(cCp.getText()));
+
+		customer.setRate(Integer.parseInt(rate.getText()));
+		customer.setTotal(300);
+		customer.setPaid(Integer.parseInt(custPaid.getText()));
+		repo.addCustomer(customer);
+		repo.addChicken(chicken);
+
 	}
 
 	public void validation() {

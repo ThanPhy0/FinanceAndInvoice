@@ -2,7 +2,7 @@ package finance.invoice.entity;
 
 import java.time.LocalDate;
 
-public class Items {
+public class Customer {
 
 	public enum Type {
 		InList, OutList
@@ -15,9 +15,6 @@ public class Items {
 	private int id;
 	private LocalDate date;
 	private String Name;
-	private int burma;
-	private int cmee;
-	private int cp;
 	private int rate;
 	private int total;
 	private int paid;
@@ -44,30 +41,6 @@ public class Items {
 
 	public void setName(String name) {
 		Name = name;
-	}
-
-	public int getBurma() {
-		return burma;
-	}
-
-	public void setBurma(int burma) {
-		this.burma = burma;
-	}
-
-	public int getCmee() {
-		return cmee;
-	}
-
-	public void setCmee(int cmee) {
-		this.cmee = cmee;
-	}
-
-	public int getCp() {
-		return cp;
-	}
-
-	public void setCp(int cp) {
-		this.cp = cp;
 	}
 
 	public int getRate() {
