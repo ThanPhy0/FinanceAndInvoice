@@ -38,5 +38,5 @@ insert into chicken (burma, cmee, cp, finance_id) values (2,3,4,5);
 SELECT * FROM finance LEFT JOIN chicken on finance.id = chicken.id UNION ALL SELECT * FROM finance RIGHT JOIN chicken on finance.id = chicken.id;
 
 --This is inner join
-SELECT i_date, i_name, burma, cmee, cp, rate, total, paid FROM finance INNER JOIN chicken ON finance.id = chicken.id;
+SELECT finance.id AS id, i_date, i_name, burma, cmee, cp, rate, total, paid FROM finance INNER JOIN chicken ON finance.id = chicken.id;
 

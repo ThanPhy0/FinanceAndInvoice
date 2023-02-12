@@ -4,8 +4,9 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
-import finance.invoice.entity.Chicken;
-import finance.invoice.entity.Customer;
+import finance.invoice.entity.TableConstructor;
+import finance.invoice.service.MySqlDB;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -21,31 +22,34 @@ public class MainView implements Initializable {
 	private Label datetime;
 
 	@FXML
-	private TableView<Customer, Chicken> tableView;
+	private TableView<TableConstructor> tableView;
 
 	@FXML
-	private TableColumn<Customer, Integer> colID;
+	private TableColumn<TableConstructor, Integer> colID;
 
 	@FXML
-	private TableColumn<Customer, LocalDateTime> colDate;
+	private TableColumn<TableConstructor, LocalDateTime> colDate;
 
 	@FXML
-	private TableColumn<Customer, String> colName;
+	private TableColumn<TableConstructor, String> colName;
 
 	@FXML
-	private TableColumn<Chicken, Integer> colBurm;
+	private TableColumn<TableConstructor, Integer> colBurm;
 
 	@FXML
-	private TableColumn<Chicken, Integer> colCmee;
+	private TableColumn<TableConstructor, Integer> colCmee;
 
 	@FXML
-	private TableColumn<Chicken, Integer> colCp;
+	private TableColumn<TableConstructor, Integer> colCp;
 
 	@FXML
-	private TableColumn<Customer, Integer> colRate;
+	private TableColumn<TableConstructor, Integer> colRate;
 
 	@FXML
-	private TableColumn<Customer, Integer> colTotal;
+	private TableColumn<TableConstructor, Integer> colTotal;
+
+	@FXML
+	private TableColumn<TableConstructor, Integer> colPaid;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -63,15 +67,21 @@ public class MainView implements Initializable {
 	}
 
 	private void setUI() {
-		colDate.setCellValueFactory(new PropertyValueFactory<Customer, LocalDateTime>("i_date"));
-		colName.setCellValueFactory(new PropertyValueFactory<Customer, String>("i_name"));
-		colBurm.setCellValueFactory(new PropertyValueFactory<Chicken, Integer>("burma"));
-		colCmee.setCellValueFactory(new PropertyValueFactory<Chicken, Integer>("cmee"));
-		colCp.setCellValueFactory(new PropertyValueFactory<Chicken, Integer>("cp"));
-		colRate.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("rate"));
-		colTotal.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("total"));
-		
-		tableView.
+		MySqlDB mysqlDb = new MySqlDB();
+		ObservableList<TableConstructor> list = mysqlDb.joinTable();
+		System.out.println(list);
+
+		colID.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("id"));
+		colDate.setCellValueFactory(new PropertyValueFactory<TableConstructor, LocalDateTime>("i_date"));
+		colName.setCellValueFactory(new PropertyValueFactory<TableConstructor, String>("i_name"));
+		colBurm.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("burma"));
+		colCmee.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("cmee"));
+		colCp.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("cp"));
+		colRate.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("rate"));
+		colTotal.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("total"));
+		colPaid.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("paid"));
+
+		tableView.setItems(list);
 	}
 
 }

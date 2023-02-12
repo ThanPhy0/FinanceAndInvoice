@@ -2,6 +2,8 @@ package finance.invoice.service;
 
 import finance.invoice.entity.Chicken;
 import finance.invoice.entity.Customer;
+import finance.invoice.entity.TableConstructor;
+import javafx.collections.ObservableList;
 
 public interface Repository {
 
@@ -16,6 +18,5 @@ public interface Repository {
 	void addChicken(Chicken chicken);
 
 	// Join CustomerServiceTable & ChickenServiceTable
-	void getBothTable();
-
+	ObservableList<TableConstructor> joinTable();
 }

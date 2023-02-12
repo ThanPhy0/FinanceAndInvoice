@@ -1,6 +1,5 @@
 package finance.invoice.view;
 
-import finance.invoice.service.MySqlDB;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,7 +15,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 //			primaryStage.getIcons().add(new Image("com/coder/balance/resource/sing.jpg"));
 //			primaryStage.setResizable(false);
-			primaryStage.setTitle("MY BALANCE APP");
+			primaryStage.setTitle("Finance & Invoice");
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -25,7 +24,5 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
-		MySqlDB mysql = new MySqlDB();
-		mysql.getBothTable();
 	}
 }

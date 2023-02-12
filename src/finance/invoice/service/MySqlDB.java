@@ -2,10 +2,16 @@ package finance.invoice.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import finance.invoice.entity.Chicken;
 import finance.invoice.entity.Customer;
+import finance.invoice.entity.TableConstructor;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class MySqlDB implements Repository {
 
@@ -16,6 +22,7 @@ public class MySqlDB implements Repository {
 	private static Repository Repo = new MySqlDB();
 
 	Connection con;
+	TableConstructor tcConstructor;
 
 	public static Repository getInstance() {
 		return Repo;
@@ -53,17 +60,29 @@ public class MySqlDB implements Repository {
 
 	}
 
+
 	@Override
-	public void getBothTable() {
+	public ObservableList<TableConstructor> joinTable() {
 		// TODO Auto-generated method stub
-		JoinTables joinTable = new JoinTables();
+		String bothTable = "SELECT finance.id AS id, i_date, i_name, burma, cmee, cp, rate, total, paid FROM finance INNER JOIN chicken ON finance.id = chicken.id;";
+		ObservableList<TableConstructor> obList = FXCollections.observableArrayList();
+
 		try {
 			con = getConnection();
-			System.out.println(joinTable.joinBoth(con));
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(bothTable);
+			while (rs.next()) {
+				tcConstructor = new TableConstructor(rs.getInt("id"), rs.getDate("i_date").toLocalDate(), rs.getString("i_name"),
+						rs.getInt("burma"), rs.getInt("cmee"), rs.getInt("cp"), rs.getInt("rate"), rs.getInt("total"),
+						rs.getInt("paid"));
+
+				obList.add(tcConstructor);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		return obList;
 	}
+
 }
