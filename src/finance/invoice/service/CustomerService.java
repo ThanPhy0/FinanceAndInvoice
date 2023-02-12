@@ -9,7 +9,7 @@ import java.sql.Statement;
 import finance.invoice.entity.Customer;
 
 public class CustomerService extends MySqlDB {
-	
+
 	static final String tInsert = "INSERT INTO finance(i_date, i_name, rate, total, paid) VALUES (?,?,?,?,?)";
 
 	public void add(Connection con, Customer customer) {

@@ -6,14 +6,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import finance.invoice.entity.Chicken;
-import finance.invoice.entity.Customer;
 
 public class ChickenService extends MySqlDB {
 
 	final String cInsert = "INSERT INTO chicken(burma, cmee, cp, finance_id) VALUES (?,?,?,?)";
 
 	public void add(Connection con, Chicken chicken) {
-		Customer c = new Customer();
 		try {
 			PreparedStatement prep = con.prepareStatement(cInsert, Statement.RETURN_GENERATED_KEYS);
 			prep.setInt(1, chicken.getBurma());
