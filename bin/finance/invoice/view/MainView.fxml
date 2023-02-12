@@ -39,11 +39,11 @@
                               <Insets bottom="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Edit">
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#edit" prefHeight="25.0" prefWidth="80.0" text="Edit">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin></Button>
-                        <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Delete">
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="80.0" text="Delete">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>

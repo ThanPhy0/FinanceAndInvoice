@@ -19,4 +19,10 @@ public interface Repository {
 
 	// Join CustomerServiceTable & ChickenServiceTable
 	ObservableList<TableConstructor> joinTable();
+
+	// edit
+	void edit(int id);
+
+	// delete
+	void delete(int id);
 }

@@ -2,6 +2,7 @@ package finance.invoice.view;
 
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import finance.invoice.entity.TableConstructor;
@@ -10,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class MainView implements Initializable {
 
 	ConfigView configView;
+	MySqlDB mySqlDb;
 
 	@FXML
 	private Label datetime;
@@ -59,17 +62,10 @@ public class MainView implements Initializable {
 		setUI();
 	}
 
-	@FXML
-	public void addNew() {
-		configView = new ConfigView();
-		configView.showForm("AddView.fxml", "application.css");
-
-	}
-
 	private void setUI() {
+		tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		MySqlDB mysqlDb = new MySqlDB();
 		ObservableList<TableConstructor> list = mysqlDb.joinTable();
-		System.out.println(list);
 
 		colID.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("id"));
 		colDate.setCellValueFactory(new PropertyValueFactory<TableConstructor, LocalDateTime>("i_date"));
@@ -84,4 +80,25 @@ public class MainView implements Initializable {
 		tableView.setItems(list);
 	}
 
+	public void addNew() {
+		configView = new ConfigView();
+		configView.showForm("AddView.fxml", "application.css");
+
+	}
+
+	public void edit() {
+
+	}
+
+	public void delete() {
+		ObservableList<TableConstructor> selectItem = tableView.getSelectionModel().getSelectedItems();
+		mySqlDb = new MySqlDB();
+		ArrayList<Integer> data = new ArrayList<>();
+		for (TableConstructor out : selectItem) {
+			data.add(out.getId());
+		}
+		for (int out : data) {
+			mySqlDb.delete(out);
+		}
+	}
 }

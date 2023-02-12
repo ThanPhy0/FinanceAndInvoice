@@ -2,6 +2,7 @@ package finance.invoice.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,6 +22,7 @@ public class MySqlDB implements Repository {
 	private static Repository Repo = new MySqlDB();
 
 	Connection con;
+	PreparedStatement prepStmt;
 	TableConstructor tcConstructor;
 
 	public static Repository getInstance() {
@@ -59,7 +61,6 @@ public class MySqlDB implements Repository {
 
 	}
 
-
 	@Override
 	public ObservableList<TableConstructor> joinTable() {
 		// TODO Auto-generated method stub
@@ -71,9 +72,9 @@ public class MySqlDB implements Repository {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(bothTable);
 			while (rs.next()) {
-				tcConstructor = new TableConstructor(rs.getInt("id"), rs.getDate("i_date").toLocalDate(), rs.getString("i_name"),
-						rs.getInt("burma"), rs.getInt("cmee"), rs.getInt("cp"), rs.getInt("rate"), rs.getInt("total"),
-						rs.getInt("paid"));
+				tcConstructor = new TableConstructor(rs.getInt("id"), rs.getDate("i_date").toLocalDate(),
+						rs.getString("i_name"), rs.getInt("burma"), rs.getInt("cmee"), rs.getInt("cp"),
+						rs.getInt("rate"), rs.getInt("total"), rs.getInt("paid"));
 
 				obList.add(tcConstructor);
 			}
@@ -82,6 +83,27 @@ public class MySqlDB implements Repository {
 			e.printStackTrace();
 		}
 		return obList;
+	}
+
+	@Override
+	public void edit(int id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		String delete = "DELETE FROM finance WHERE id = ?;";
+		try {
+			con = getConnection();
+			prepStmt = con.prepareStatement(delete);
+			prepStmt.setInt(1, id);
+			prepStmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

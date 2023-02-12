@@ -17,7 +17,7 @@ public class ChickenService extends MySqlDB {
 			prep.setInt(1, chicken.getBurma());
 			prep.setInt(2, chicken.getCmee());
 			prep.setInt(3, chicken.getCp());
-			prep.setInt(4, 4);
+			prep.setInt(4, 1);
 			prep.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
