@@ -2,13 +2,16 @@ package finance.invoice.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import finance.invoice.entity.Chicken;
 import finance.invoice.entity.Customer;
 
 public class MySqlDB implements Repository {
+
+	static final String URL = "jdbc:mysql://localhost:3306/test";
+	static final String User = "thanphyo";
+	static final String Pass = "271999than";
 
 	private static Repository Repo = new MySqlDB();
 
@@ -19,7 +22,7 @@ public class MySqlDB implements Repository {
 	}
 
 	private Connection getConnection() throws SQLException {
-		return DriverManager.getConnection(Queries.URL, Queries.User, Queries.Pass);
+		return DriverManager.getConnection(URL, User, Pass);
 	}
 
 	@Override
@@ -51,8 +54,16 @@ public class MySqlDB implements Repository {
 	}
 
 	@Override
-	public void getBothTable(ResultSet rs) {
+	public void getBothTable() {
 		// TODO Auto-generated method stub
+		JoinTables joinTable = new JoinTables();
+		try {
+			con = getConnection();
+			System.out.println(joinTable.joinBoth(con));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 }

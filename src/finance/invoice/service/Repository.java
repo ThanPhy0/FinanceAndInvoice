@@ -1,7 +1,5 @@
 package finance.invoice.service;
 
-import java.sql.ResultSet;
-
 import finance.invoice.entity.Chicken;
 import finance.invoice.entity.Customer;
 
@@ -18,6 +16,6 @@ public interface Repository {
 	void addChicken(Chicken chicken);
 
 	// Join CustomerServiceTable & ChickenServiceTable
-	void getBothTable(ResultSet rs);
+	void getBothTable();
 
 }

@@ -34,16 +34,6 @@ FOREIGN KEY(`finance_id`) REFERENCES finance(`id`) ON DELETE CASCADE
 
 insert into chicken (burma, cmee, cp, finance_id) values (2,3,4,5);
 
-
---join finance and type table
-select f.i_name, c.burma from finance f join chicken c join on f.i_name=c.burma where f.i_name=c.burma;
-
-select f.id, c.id from finance f join chicken c on c.cmee=f.id;
-
-select * from finance, chicken from finance f join chicken c on finance=chicken;
-
-select * from finance f FULL JOIN chicken c on f.id=c.id;
-
 --This is union join
 SELECT * FROM finance LEFT JOIN chicken on finance.id = chicken.id UNION ALL SELECT * FROM finance RIGHT JOIN chicken on finance.id = chicken.id;
 

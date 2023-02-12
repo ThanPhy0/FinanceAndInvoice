@@ -55,18 +55,18 @@
       </HBox>
       <TableView prefHeight="546.0" prefWidth="1069.0">
         <columns>
-          <TableColumn prefWidth="63.0" text="No." />
-            <TableColumn prefWidth="149.99996948242188" text="Date &amp; Time" />
-            <TableColumn prefWidth="155.0" text="Name" />
+          <TableColumn fx:id="colID" prefWidth="63.0" text="No." />
+            <TableColumn fx:id="colDate" prefWidth="149.99996948242188" text="Date &amp; Time" />
+            <TableColumn fx:id="colName" prefWidth="155.0" text="Name" />
             <TableColumn prefWidth="257.0" text="Type">
                <columns>
-                  <TableColumn prefWidth="75.0" text="Burma" />
-                  <TableColumn prefWidth="75.0" text="Cmee" />
-                  <TableColumn prefWidth="75.0" text="CP" />
+                  <TableColumn fx:id="colBurm" prefWidth="75.0" text="Burma" />
+                  <TableColumn fx:id="colCmee" prefWidth="75.0" text="Cmee" />
+                  <TableColumn fx:id="colCp" prefWidth="75.0" text="CP" />
                </columns>
             </TableColumn>
-            <TableColumn prefWidth="129.0" text="Rate" />
-            <TableColumn prefWidth="145.0" text="Total Ammount" />
+            <TableColumn fx:id="colRate" prefWidth="129.0" text="Rate" />
+            <TableColumn fx:id="colTotal" prefWidth="145.0" text="Total Ammount" />
         </columns>
       </TableView>
       <VBox prefHeight="172.0" prefWidth="1069.0" />

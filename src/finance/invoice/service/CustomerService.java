@@ -9,10 +9,12 @@ import java.sql.Statement;
 import finance.invoice.entity.Customer;
 
 public class CustomerService extends MySqlDB {
+	
+	static final String tInsert = "INSERT INTO finance(i_date, i_name, rate, total, paid) VALUES (?,?,?,?,?)";
 
 	public void add(Connection con, Customer customer) {
 		try {
-			PreparedStatement prep = con.prepareStatement(Queries.tInsert, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement prep = con.prepareStatement(tInsert, Statement.RETURN_GENERATED_KEYS);
 			prep.setDate(1, Date.valueOf(customer.getDate()));
 			prep.setString(2, customer.getName());
 			prep.setInt(3, customer.getRate());

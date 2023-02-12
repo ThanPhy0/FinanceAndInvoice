@@ -9,10 +9,13 @@ import finance.invoice.entity.Chicken;
 import finance.invoice.entity.Customer;
 
 public class ChickenService extends MySqlDB {
+
+	final String cInsert = "INSERT INTO chicken(burma, cmee, cp, finance_id) VALUES (?,?,?,?)";
+
 	public void add(Connection con, Chicken chicken) {
 		Customer c = new Customer();
 		try {
-			PreparedStatement prep = con.prepareStatement(Queries.cInsert, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement prep = con.prepareStatement(cInsert, Statement.RETURN_GENERATED_KEYS);
 			prep.setInt(1, chicken.getBurma());
 			prep.setInt(2, chicken.getCmee());
 			prep.setInt(3, chicken.getCp());
