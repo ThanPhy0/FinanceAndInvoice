@@ -2,6 +2,7 @@ package finance.invoice.service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -10,6 +11,22 @@ import finance.invoice.entity.Chicken;
 public class ChickenService extends MySqlDB {
 
 	final String cInsert = "INSERT INTO chicken(burma, cmee, cp, finance_id) VALUES (?,?,?,?)";
+
+	public void get(Connection con) {
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM chicken");
+			while (rs.next()) {
+				rs.getInt("burma");
+				rs.getInt("cmee");
+				rs.getInt("cp");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 
 	public void add(Connection con, Chicken chicken) {
 		try {

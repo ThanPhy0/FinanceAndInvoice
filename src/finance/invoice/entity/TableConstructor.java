@@ -9,12 +9,17 @@ public class TableConstructor {
 	private int burma;
 	private int cmee;
 	private int cp;
+
+	private int multBurma;
+	private int multCmee;
+	private int multCp;
+
 	private int rate;
 	private int total;
 	private int paid;
 
-	public TableConstructor(int id, LocalDate i_date, String i_name, int burma, int cmee, int cp, int rate, int total,
-			int paid) {
+	public TableConstructor(int id, LocalDate i_date, String i_name, int burma, int cmee, int cp, int multBurma,
+			int multCmee, int multCp, int rate, int total, int paid) {
 		super();
 		this.id = id;
 		this.i_date = i_date;
@@ -22,6 +27,9 @@ public class TableConstructor {
 		this.burma = burma;
 		this.cmee = cmee;
 		this.cp = cp;
+		this.multBurma = multBurma;
+		this.multCmee = multCmee;
+		this.multCp = multCp;
 		this.rate = rate;
 		this.total = total;
 		this.paid = paid;
@@ -73,6 +81,30 @@ public class TableConstructor {
 
 	public void setCp(int cp) {
 		this.cp = cp;
+	}
+
+	public int getMultBurma() {
+		return multBurma;
+	}
+
+	public void setMultBurma(int multBurma) {
+		this.multBurma = multBurma;
+	}
+
+	public int getMultCmee() {
+		return multCmee;
+	}
+
+	public void setMultCmee(int multCmee) {
+		this.multCmee = multCmee;
+	}
+
+	public int getMultCp() {
+		return multCp;
+	}
+
+	public void setMultCp(int multCp) {
+		this.multCp = multCp;
 	}
 
 	public int getRate() {

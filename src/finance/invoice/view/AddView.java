@@ -15,11 +15,12 @@ import javafx.scene.control.TextField;
 
 public class AddView implements Initializable {
 
-	ConfigView configView;
 	MySqlDB mysqlDB;
 
 	@FXML
-	public Label datetime;
+	public Label date;
+	@FXML
+	public Label ID;
 	@FXML
 	public Label totalAmo;
 	@FXML
@@ -31,10 +32,11 @@ public class AddView implements Initializable {
 	@FXML
 	private TextField cCp;
 	@FXML
-	private TextField rate;
+	private TextField total;
 	@FXML
 	private TextField custPaid;
 
+	private ConfigView configView;
 	private Customer customer;
 	private Chicken chicken;
 	private Repository repo;
@@ -43,7 +45,7 @@ public class AddView implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		configView = new ConfigView();
-		configView.setDateTime(datetime);
+		configView.setDateTime(date);
 		repo = Repository.getInstance();
 	}
 
@@ -63,7 +65,7 @@ public class AddView implements Initializable {
 		chicken.setCmee(Integer.parseInt(cCmee.getText()));
 		chicken.setCp(Integer.parseInt(cCp.getText()));
 
-		customer.setRate(Integer.parseInt(rate.getText()));
+		customer.setRate(Integer.parseInt(total.getText()));
 		customer.setTotal(300);
 		customer.setPaid(Integer.parseInt(custPaid.getText()));
 		repo.addCustomer(customer);
@@ -71,15 +73,29 @@ public class AddView implements Initializable {
 
 	}
 
+	public void edit(int id, LocalDate lDate, String custName, int cBur, int cmee, int cp, int custRate, int custTotal,
+			int cusPaid) {
+		ID.setText(String.valueOf(id));
+		date.setText(String.valueOf(lDate));
+		cusName.setText(custName);
+		cBM.setText(String.valueOf(cBur));
+		cCmee.setText(String.valueOf(cmee));
+		cCp.setText(String.valueOf(cp));
+		total.setText(String.valueOf(custRate));
+		custPaid.setText(String.valueOf(custPaid));
+
+	}
+
 	public void validation() {
-		if (cusName.getText().isEmpty() || rate.getText().isEmpty() || custPaid.getText().isEmpty()) {
+		if (cusName.getText().isEmpty() || total.getText().isEmpty() || custPaid.getText().isEmpty()) {
 			System.out.println("No data insert!");
 		} else if (cusName.getText().isEmpty()) {
 			System.out.println("insert customer name");
-		} else if (rate.getText().isEmpty()) {
+		} else if (total.getText().isEmpty()) {
 			System.out.println("insert rate");
 		} else if (custPaid.getText().isEmpty()) {
 			System.out.println("insert customer paid ammount");
 		}
 	}
+
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finance.invoice.view.MainView">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finance.invoice.view.MainView">
    <children>
       <HBox prefHeight="130.0" prefWidth="1069.0">
          <children>
@@ -54,19 +54,47 @@
             </HBox>
          </children>
       </HBox>
-      <TableView fx:id="tableView" prefHeight="546.0" prefWidth="1069.0">
+      <VBox prefHeight="83.0" prefWidth="848.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="172.0" text="Burma - 5000">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="26.0" prefWidth="172.0" text="Cmee - 6000">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="26.0" prefWidth="172.0" text="CP - 5000">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="20.0" right="20.0" />
+         </VBox.margin>
+      </VBox>
+      <TableView fx:id="tableView" prefHeight="472.0" prefWidth="821.0">
         <columns>
           <TableColumn fx:id="colID" prefWidth="42.0" text="No." />
             <TableColumn fx:id="colDate" prefWidth="95.0" text="Date &amp; Time" />
             <TableColumn fx:id="colName" prefWidth="117.0" text="Name" />
-            <TableColumn prefWidth="187.0" text="Type">
+            <TableColumn prefWidth="187.0" text="Count">
                <columns>
                   <TableColumn fx:id="colBurm" prefWidth="55.0" text="Burma" />
                   <TableColumn fx:id="colCmee" prefWidth="47.0" text="Cmee" />
                   <TableColumn fx:id="colCp" prefWidth="40.0" text="CP" />
                </columns>
             </TableColumn>
-            <TableColumn fx:id="colRate" prefWidth="89.0" text="Rate" />
+            <TableColumn prefWidth="187.0" text="Ammount">
+               <columns>
+                  <TableColumn fx:id="amBurma" prefWidth="55.0" text="Burma" />
+                  <TableColumn fx:id="amCmee" prefWidth="47.0" text="Cmee" />
+                  <TableColumn fx:id="amCp" prefWidth="40.0" text="CP" />
+               </columns>
+            </TableColumn>
             <TableColumn fx:id="colTotal" prefWidth="109.0" text="Total Ammount" />
             <TableColumn fx:id="colPaid" prefWidth="98.0" text="Paid" />
         </columns>

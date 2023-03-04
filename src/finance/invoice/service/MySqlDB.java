@@ -10,6 +10,7 @@ import java.sql.Statement;
 import finance.invoice.entity.Chicken;
 import finance.invoice.entity.Customer;
 import finance.invoice.entity.TableConstructor;
+import finance.invoice.operations.Operate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -67,14 +68,19 @@ public class MySqlDB implements Repository {
 		String bothTable = "SELECT finance.id AS id, i_date, i_name, burma, cmee, cp, rate, total, paid FROM finance INNER JOIN chicken ON finance.id = chicken.id;";
 		ObservableList<TableConstructor> obList = FXCollections.observableArrayList();
 
+		Operate op = new Operate();
+
 		try {
 			con = getConnection();
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(bothTable);
 			while (rs.next()) {
+				int multi = rs.getInt("burma") * 200;
+				System.out.println(multi);
 				tcConstructor = new TableConstructor(rs.getInt("id"), rs.getDate("i_date").toLocalDate(),
 						rs.getString("i_name"), rs.getInt("burma"), rs.getInt("cmee"), rs.getInt("cp"),
-						rs.getInt("rate"), rs.getInt("total"), rs.getInt("paid"));
+						op.multipile(rs.getInt("burma")), op.multipile(rs.getInt("cmee")),
+						op.multipile(rs.getInt("cp")), rs.getInt("rate"), rs.getInt("total"), rs.getInt("paid"));
 
 				obList.add(tcConstructor);
 			}

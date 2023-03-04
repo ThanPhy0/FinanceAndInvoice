@@ -30,12 +30,12 @@
          <children>
             <HBox alignment="CENTER" prefHeight="27.0" prefWidth="497.0">
                <children>
-                  <Label fx:id="id" prefHeight="17.0" prefWidth="28.0" text="No :">
+                  <Label fx:id="id" prefHeight="21.0" prefWidth="36.0" text="No : ">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="17.0" prefWidth="13.0" text="-">
+                  <Label fx:id="ID" prefHeight="21.0" prefWidth="141.0" text="-">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -47,15 +47,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="date" prefHeight="21.0" prefWidth="97.0" text="Date &amp; Time : ">
+                  <Label prefHeight="21.0" prefWidth="97.0" text="Date &amp; Time : ">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="datetime" prefHeight="17.0" prefWidth="185.0" text="-">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
+                  <Label fx:id="date" prefHeight="21.0" prefWidth="260.0" text="-">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -107,12 +104,12 @@
             </VBox>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="497.0">
                <children>
-                  <Label prefHeight="26.0" prefWidth="62.0" text="Rate : ">
+                  <Label prefHeight="26.0" prefWidth="62.0" text="Total : ">
                      <font>
                         <Font name="Gabriola" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="rate" prefHeight="25.0" prefWidth="208.0">
+                  <TextField fx:id="total" prefHeight="25.0" prefWidth="208.0">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
