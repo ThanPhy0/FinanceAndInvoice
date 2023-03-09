@@ -10,6 +10,7 @@ import finance.invoice.service.MySqlDB;
 import finance.invoice.service.Repository;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -35,6 +36,8 @@ public class AddView implements Initializable {
 	private TextField total;
 	@FXML
 	private TextField custPaid;
+	@FXML
+	private Button saveupdate;
 
 	private ConfigView configView;
 	private Customer customer;
@@ -49,7 +52,7 @@ public class AddView implements Initializable {
 		repo = Repository.getInstance();
 	}
 
-	public void addNew() {
+	public void SaveAndUpdate() {
 		validation();
 		if (customer == null)
 			customer = new Customer();
@@ -58,32 +61,52 @@ public class AddView implements Initializable {
 			chicken = new Chicken();
 		}
 
-		customer.setDate(LocalDate.now());
-		customer.setName(cusName.getText());
+		if (saveupdate.getText().equals("Save")) {
+			customer.setDate(LocalDate.now());
+			customer.setName(cusName.getText());
 
-		chicken.setBurma(Integer.parseInt(cBM.getText()));
-		chicken.setCmee(Integer.parseInt(cCmee.getText()));
-		chicken.setCp(Integer.parseInt(cCp.getText()));
+			chicken.setBurma(Integer.parseInt(cBM.getText()));
+			chicken.setCmee(Integer.parseInt(cCmee.getText()));
+			chicken.setCp(Integer.parseInt(cCp.getText()));
 
-		customer.setRate(Integer.parseInt(total.getText()));
-		customer.setTotal(300);
-		customer.setPaid(Integer.parseInt(custPaid.getText()));
-		repo.addCustomer(customer);
-		repo.addChicken(chicken);
+			customer.setRate(Integer.parseInt(total.getText()));
+			customer.setTotal(300);
+			customer.setPaid(Integer.parseInt(custPaid.getText()));
+
+			repo.addCustomer(customer);
+			repo.addChicken(chicken);
+		} else if (saveupdate.getText().equals("Update")) {
+			System.out.println("Update");
+			customer.setDate(LocalDate.now());
+			customer.setName(cusName.getText());
+
+			chicken.setBurma(Integer.parseInt(cBM.getText()));
+			chicken.setCmee(Integer.parseInt(cCmee.getText()));
+			chicken.setCp(Integer.parseInt(cCp.getText()));
+			chicken.setId(Integer.parseInt(ID.getText()));
+			
+			customer.setTotal(Integer.parseInt(total.getText()));
+			customer.setPaid(Integer.parseInt(custPaid.getText()));
+			customer.setId(Integer.valueOf(ID.getText()));
+
+			System.out.println(ID.getText());
+			repo.updateCustomer(customer);
+			repo.updateChicken(chicken);
+		}
 
 	}
 
-	public void edit(int id, LocalDate lDate, String custName, int cBur, int cmee, int cp, int custRate, int custTotal,
-			int cusPaid) {
+	public void setForEdit(int id, LocalDate lDate, String custName, int cBur, int cmee, int cp, int custTotal,
+			int cusPaid, String update) {
 		ID.setText(String.valueOf(id));
 		date.setText(String.valueOf(lDate));
 		cusName.setText(custName);
 		cBM.setText(String.valueOf(cBur));
 		cCmee.setText(String.valueOf(cmee));
 		cCp.setText(String.valueOf(cp));
-		total.setText(String.valueOf(custRate));
-		custPaid.setText(String.valueOf(custPaid));
-
+		total.setText(String.valueOf(custTotal));
+		custPaid.setText(String.valueOf(cusPaid));
+		saveupdate.setText(update);
 	}
 
 	public void validation() {

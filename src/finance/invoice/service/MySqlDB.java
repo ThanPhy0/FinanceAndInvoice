@@ -63,6 +63,32 @@ public class MySqlDB implements Repository {
 	}
 
 	@Override
+	public void updateCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		CustomerService cs = new CustomerService();
+		try {
+			con = getConnection();
+			cs.update(con, customer);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void updateChicken(Chicken chicken) {
+		// TODO Auto-generated method stub
+		ChickenService ck = new ChickenService();
+		try {
+			con = getConnection();
+			ck.update(con, chicken);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
 	public ObservableList<TableConstructor> joinTable() {
 		// TODO Auto-generated method stub
 		String bothTable = "SELECT finance.id AS id, i_date, i_name, burma, cmee, cp, rate, total, paid FROM finance INNER JOIN chicken ON finance.id = chicken.id;";
@@ -111,5 +137,4 @@ public class MySqlDB implements Repository {
 			e.printStackTrace();
 		}
 	}
-
 }

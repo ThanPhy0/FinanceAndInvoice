@@ -112,14 +112,16 @@ public class MainView implements Initializable {
 			try {
 				root = loader.load();
 				AddView av = loader.getController();
-				av.edit(tableView.getSelectionModel().getSelectedItem().getId(),
+				av.setForEdit(tableView.getSelectionModel().getSelectedItem().getId(),
 						tableView.getSelectionModel().getSelectedItem().getI_date(),
 						tableView.getSelectionModel().getSelectedItem().getI_name(),
 						tableView.getSelectionModel().getSelectedItem().getBurma(),
 						tableView.getSelectionModel().getSelectedItem().getCmee(),
 						tableView.getSelectionModel().getSelectedItem().getCp(),
 						tableView.getSelectionModel().getSelectedItem().getTotal(),
-						tableView.getSelectionModel().getSelectedItem().getPaid(),0);
+						tableView.getSelectionModel().getSelectedItem().getPaid(),
+						"Update");
+						
 				Scene scene = new Scene(root);
 				stage.setScene(scene);
 				stage.show();

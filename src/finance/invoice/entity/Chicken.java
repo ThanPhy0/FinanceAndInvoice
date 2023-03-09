@@ -1,9 +1,18 @@
 package finance.invoice.entity;
 
 public class Chicken {
+	private int id;
 	private int burma;
 	private int cmee;
 	private int cp;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getBurma() {
 		return burma;

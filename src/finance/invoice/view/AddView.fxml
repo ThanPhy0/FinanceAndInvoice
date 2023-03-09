@@ -142,7 +142,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="43.0" prefWidth="497.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#addNew" prefHeight="25.0" prefWidth="196.0" text="Save" textOverrun="CENTER_ELLIPSIS">
+            <Button fx:id="saveupdate" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#SaveAndUpdate" prefHeight="25.0" prefWidth="196.0" text="Save" textOverrun="CENTER_ELLIPSIS">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>

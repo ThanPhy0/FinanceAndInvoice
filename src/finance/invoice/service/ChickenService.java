@@ -10,7 +10,9 @@ import finance.invoice.entity.Chicken;
 
 public class ChickenService extends MySqlDB {
 
-	final String cInsert = "INSERT INTO chicken(burma, cmee, cp, finance_id) VALUES (?,?,?,?)";
+	static final String cInsert = "INSERT INTO chicken(burma, cmee, cp, finance_id) VALUES (?,?,?,?)";
+
+	static final String cUpdate = "UPDATE CHICKEN SET burma=?, cmee=?, cp=? where id=?";
 
 	public void get(Connection con) {
 		try {
@@ -40,5 +42,21 @@ public class ChickenService extends MySqlDB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void update(Connection con, Chicken chicken) {
+		PreparedStatement prep;
+		try {
+			prep = con.prepareStatement(cUpdate);
+			prep.setInt(1, chicken.getBurma());
+			prep.setInt(2, chicken.getCmee());
+			prep.setInt(3, chicken.getCp());
+			prep.setInt(4, chicken.getId());
+			prep.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }
