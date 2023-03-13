@@ -26,9 +26,6 @@ public interface Repository {
 	// ChickenService_Update
 	void updateChicken(Chicken chicken);
 
-	// edit
-	void edit(int id);
-
 	// delete
 	void delete(int id);
 }

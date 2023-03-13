@@ -118,12 +118,6 @@ public class MySqlDB implements Repository {
 	}
 
 	@Override
-	public void edit(int id) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
 		String delete = "DELETE FROM finance WHERE id = ?;";

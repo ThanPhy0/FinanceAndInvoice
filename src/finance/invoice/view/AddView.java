@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import finance.invoice.entity.Chicken;
 import finance.invoice.entity.Customer;
+import finance.invoice.operations.Operate;
 import finance.invoice.service.MySqlDB;
 import finance.invoice.service.Repository;
 import javafx.fxml.FXML;
@@ -33,8 +34,6 @@ public class AddView implements Initializable {
 	@FXML
 	private TextField cCp;
 	@FXML
-	private TextField total;
-	@FXML
 	private TextField custPaid;
 	@FXML
 	private Button saveupdate;
@@ -53,7 +52,7 @@ public class AddView implements Initializable {
 	}
 
 	public void SaveAndUpdate() {
-		validation();
+//		validation();
 		if (customer == null)
 			customer = new Customer();
 
@@ -64,28 +63,29 @@ public class AddView implements Initializable {
 		if (saveupdate.getText().equals("Save")) {
 			customer.setDate(LocalDate.now());
 			customer.setName(cusName.getText());
-			customer.setTotal(Integer.parseInt(total.getText()));
+
+			chicken.setBurma(Float.parseFloat(cBM.getText()));
+			chicken.setCmee(Float.parseFloat(cCp.getText()));
+			chicken.setCp(Float.parseFloat(cCmee.getText()));
+
+			customer.setTotal(Integer.parseInt(totalAmo.getText()));
 			customer.setPaid(Integer.parseInt(custPaid.getText()));
 
-			chicken.setBurma(Double.parseDouble(cBM.getText()));
-			chicken.setCmee(Double.parseDouble(cCp.getText()));
-			chicken.setCp(Double.parseDouble(cCmee.getText()));
-
 //			customer.setRate(Integer.parseInt(total.getText()));
-
+			System.out.println(cusName.getText());
 			repo.addCustomer(customer);
-//			repo.addChicken(chicken);
+			repo.addChicken(chicken);
 		} else if (saveupdate.getText().equals("Update")) {
 			System.out.println("Update");
 			customer.setDate(LocalDate.now());
 			customer.setName(cusName.getText());
 
-			chicken.setBurma(Double.parseDouble(cBM.getText()));
-			chicken.setCmee(Double.parseDouble(cCp.getText()));
-			chicken.setCp(Double.parseDouble(cCmee.getText()));
+			chicken.setBurma(Float.parseFloat(cBM.getText()));
+			chicken.setCmee(Float.parseFloat(cCp.getText()));
+			chicken.setCp(Float.parseFloat(cCmee.getText()));
 			chicken.setId(Integer.parseInt(ID.getText()));
 
-			customer.setTotal(Integer.parseInt(total.getText()));
+			customer.setTotal(Integer.parseInt(totalAmo.getText()));
 			customer.setPaid(Integer.parseInt(custPaid.getText()));
 			customer.setId(Integer.valueOf(ID.getText()));
 
@@ -104,21 +104,30 @@ public class AddView implements Initializable {
 		cBM.setText(String.valueOf(cBur));
 		cCmee.setText(String.valueOf(cmee));
 		cCp.setText(String.valueOf(cp));
-		total.setText(String.valueOf(custTotal));
+		totalAmo.setText(String.valueOf(custTotal));
 		custPaid.setText(String.valueOf(cusPaid));
 		saveupdate.setText(update);
 	}
 
 	public void validation() {
-		if (cusName.getText().isEmpty() || total.getText().isEmpty() || custPaid.getText().isEmpty()) {
+		if (cusName.getText().isEmpty() || custPaid.getText().isEmpty()) {
 			System.out.println("No data insert!");
 		} else if (cusName.getText().isEmpty()) {
 			System.out.println("insert customer name");
-		} else if (total.getText().isEmpty()) {
-			System.out.println("insert rate");
 		} else if (custPaid.getText().isEmpty()) {
 			System.out.println("insert customer paid ammount");
 		}
+	}
+
+	public void addition() {
+		Operate op = new Operate();
+
+		float burma = op.multipile(Float.parseFloat(cBM.getText()));
+		float cmee = op.multipile(Float.parseFloat(cCmee.getText()));
+		float cp = op.multipile(Float.parseFloat(cCp.getText()));
+
+		int data = (int) (burma + cmee + cp);
+		totalAmo.setText(String.valueOf(data));
 	}
 
 }

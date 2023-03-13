@@ -31,7 +31,7 @@ SELECT * FROM finance LEFT JOIN chicken on finance.id = chicken.id UNION ALL SEL
 SELECT finance.id AS id, i_date, i_name, burma, cmee, cp, total, paid FROM finance INNER JOIN chicken ON finance.id = chicken.id;
 
 --delete
-DELETE FROM finance WHERE id = 11;
+DELETE FROM finance WHERE id = 8;
 
 drop table finance;
 drop table chicken;

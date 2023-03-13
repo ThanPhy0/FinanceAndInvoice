@@ -102,32 +102,26 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="497.0">
-               <children>
-                  <Label prefHeight="26.0" prefWidth="62.0" text="Total : ">
-                     <font>
-                        <Font name="Gabriola" size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="total" prefHeight="25.0" prefWidth="208.0">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
          </children>
       </VBox>
       <HBox alignment="CENTER" prefHeight="25.0" prefWidth="497.0">
          <children>
-            <Label fx:id="totalAmo" text="Total Ammount">
+            <Label fx:id="totalAmo" prefHeight="30.0" prefWidth="106.0" text="Total">
                <font>
-                  <Font size="22.0" />
+                  <Font size="18.0" />
                </font>
                <HBox.margin>
-                  <Insets right="20.0" />
+                  <Insets right="10.0" />
                </HBox.margin>
             </Label>
+            <Button fx:id="refreshBtn" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#addition" prefHeight="25.0" prefWidth="36.0" text="Refresh" textOverrun="CENTER_ELLIPSIS">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="7.0" />
+               </font>
+            </Button>
             <Label prefHeight="30.0" prefWidth="42.0" text="Paid :">
                <font>
                   <Font name="Gabriola" size="24.0" />
