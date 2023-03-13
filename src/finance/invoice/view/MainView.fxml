@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finance.invoice.view.MainView">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finance.invoice.view.MainView">
    <children>
       <HBox prefHeight="130.0" prefWidth="1069.0">
          <children>
@@ -81,22 +81,22 @@
           <TableColumn fx:id="colID" prefWidth="42.0" text="No." />
             <TableColumn fx:id="colDate" prefWidth="95.0" text="Date &amp; Time" />
             <TableColumn fx:id="colName" prefWidth="117.0" text="Name" />
-            <TableColumn prefWidth="187.0" text="Count">
+            <TableColumn prefWidth="111.0" text="Count">
                <columns>
                   <TableColumn fx:id="colBurm" prefWidth="55.0" text="Burma" />
                   <TableColumn fx:id="colCmee" prefWidth="47.0" text="Cmee" />
                   <TableColumn fx:id="colCp" prefWidth="40.0" text="CP" />
                </columns>
             </TableColumn>
-            <TableColumn prefWidth="187.0" text="Ammount">
+            <TableColumn minWidth="44.0" prefWidth="169.0" text="Ammount">
                <columns>
-                  <TableColumn fx:id="amBurma" prefWidth="55.0" text="Burma" />
-                  <TableColumn fx:id="amCmee" prefWidth="47.0" text="Cmee" />
-                  <TableColumn fx:id="amCp" prefWidth="40.0" text="CP" />
+                  <TableColumn fx:id="amBurma" text="Burma" />
+                  <TableColumn fx:id="amCmee" text="Cmee" />
+                  <TableColumn fx:id="amCp" text="CP" />
                </columns>
             </TableColumn>
-            <TableColumn fx:id="colTotal" prefWidth="109.0" text="Total Ammount" />
-            <TableColumn fx:id="colPaid" prefWidth="98.0" text="Paid" />
+            <TableColumn fx:id="colTotal" prefWidth="104.0" text="Total Ammount" />
+            <TableColumn fx:id="colPaid" minWidth="7.0" prefWidth="71.0" text="Paid" />
         </columns>
          <effect>
             <Blend mode="MULTIPLY" />

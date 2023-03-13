@@ -2,9 +2,9 @@ package finance.invoice.entity;
 
 public class Chicken {
 	private int id;
-	private int burma;
-	private int cmee;
-	private int cp;
+	private double burma;
+	private double cmee;
+	private double cp;
 
 	public int getId() {
 		return id;
@@ -14,27 +14,27 @@ public class Chicken {
 		this.id = id;
 	}
 
-	public int getBurma() {
+	public double getBurma() {
 		return burma;
 	}
 
-	public void setBurma(int burma) {
+	public void setBurma(double burma) {
 		this.burma = burma;
 	}
 
-	public int getCmee() {
+	public double getCmee() {
 		return cmee;
 	}
 
-	public void setCmee(int cmee) {
+	public void setCmee(double cmee) {
 		this.cmee = cmee;
 	}
 
-	public int getCp() {
+	public double getCp() {
 		return cp;
 	}
 
-	public void setCp(int cp) {
+	public void setCp(double cp) {
 		this.cp = cp;
 	}
 

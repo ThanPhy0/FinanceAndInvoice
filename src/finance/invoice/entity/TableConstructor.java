@@ -6,20 +6,19 @@ public class TableConstructor {
 	private int id;
 	private LocalDate i_date;
 	private String i_name;
-	private int burma;
-	private int cmee;
-	private int cp;
+	private float burma;
+	private float cmee;
+	private float cp;
 
-	private int multBurma;
-	private int multCmee;
-	private int multCp;
+	private float multBurma;
+	private float multCmee;
+	private float multCp;
 
-	private int rate;
 	private int total;
 	private int paid;
 
-	public TableConstructor(int id, LocalDate i_date, String i_name, int burma, int cmee, int cp, int multBurma,
-			int multCmee, int multCp, int rate, int total, int paid) {
+	public TableConstructor(int id, LocalDate i_date, String i_name, float burma, float cmee, float cp, float multBurma,
+			float multCmee, float multCp, int total, int paid) {
 		super();
 		this.id = id;
 		this.i_date = i_date;
@@ -30,7 +29,6 @@ public class TableConstructor {
 		this.multBurma = multBurma;
 		this.multCmee = multCmee;
 		this.multCp = multCp;
-		this.rate = rate;
 		this.total = total;
 		this.paid = paid;
 	}
@@ -59,60 +57,52 @@ public class TableConstructor {
 		this.i_name = i_name;
 	}
 
-	public int getBurma() {
+	public float getBurma() {
 		return burma;
 	}
 
-	public void setBurma(int burma) {
+	public void setBurma(float burma) {
 		this.burma = burma;
 	}
 
-	public int getCmee() {
+	public float getCmee() {
 		return cmee;
 	}
 
-	public void setCmee(int cmee) {
+	public void setCmee(float cmee) {
 		this.cmee = cmee;
 	}
 
-	public int getCp() {
+	public float getCp() {
 		return cp;
 	}
 
-	public void setCp(int cp) {
+	public void setCp(float cp) {
 		this.cp = cp;
 	}
 
-	public int getMultBurma() {
+	public float getMultBurma() {
 		return multBurma;
 	}
 
-	public void setMultBurma(int multBurma) {
+	public void setMultBurma(float multBurma) {
 		this.multBurma = multBurma;
 	}
 
-	public int getMultCmee() {
+	public float getMultCmee() {
 		return multCmee;
 	}
 
-	public void setMultCmee(int multCmee) {
+	public void setMultCmee(float multCmee) {
 		this.multCmee = multCmee;
 	}
 
-	public int getMultCp() {
+	public float getMultCp() {
 		return multCp;
 	}
 
-	public void setMultCp(int multCp) {
+	public void setMultCp(float multCp) {
 		this.multCp = multCp;
-	}
-
-	public int getRate() {
-		return rate;
-	}
-
-	public void setRate(int rate) {
-		this.rate = rate;
 	}
 
 	public int getTotal() {

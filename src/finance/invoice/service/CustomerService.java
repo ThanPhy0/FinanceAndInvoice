@@ -10,7 +10,7 @@ import finance.invoice.entity.Customer;
 
 public class CustomerService extends MySqlDB {
 
-	static final String tInsert = "INSERT INTO finance(i_date, i_name, rate, total, paid) VALUES (?,?,?,?,?)";
+	static final String tInsert = "INSERT INTO finance(i_date, i_name, total, paid) VALUES (?,?,?,?)";
 
 	static final String tUpdate = "UPDATE FINANCE SET i_date=?, i_name=?, total=?, paid=? WHERE id=?";
 

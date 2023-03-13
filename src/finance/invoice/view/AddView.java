@@ -64,27 +64,27 @@ public class AddView implements Initializable {
 		if (saveupdate.getText().equals("Save")) {
 			customer.setDate(LocalDate.now());
 			customer.setName(cusName.getText());
-
-			chicken.setBurma(Integer.parseInt(cBM.getText()));
-			chicken.setCmee(Integer.parseInt(cCmee.getText()));
-			chicken.setCp(Integer.parseInt(cCp.getText()));
-
-			customer.setRate(Integer.parseInt(total.getText()));
-			customer.setTotal(300);
+			customer.setTotal(Integer.parseInt(total.getText()));
 			customer.setPaid(Integer.parseInt(custPaid.getText()));
 
+			chicken.setBurma(Double.parseDouble(cBM.getText()));
+			chicken.setCmee(Double.parseDouble(cCp.getText()));
+			chicken.setCp(Double.parseDouble(cCmee.getText()));
+
+//			customer.setRate(Integer.parseInt(total.getText()));
+
 			repo.addCustomer(customer);
-			repo.addChicken(chicken);
+//			repo.addChicken(chicken);
 		} else if (saveupdate.getText().equals("Update")) {
 			System.out.println("Update");
 			customer.setDate(LocalDate.now());
 			customer.setName(cusName.getText());
 
-			chicken.setBurma(Integer.parseInt(cBM.getText()));
-			chicken.setCmee(Integer.parseInt(cCmee.getText()));
-			chicken.setCp(Integer.parseInt(cCp.getText()));
+			chicken.setBurma(Double.parseDouble(cBM.getText()));
+			chicken.setCmee(Double.parseDouble(cCp.getText()));
+			chicken.setCp(Double.parseDouble(cCmee.getText()));
 			chicken.setId(Integer.parseInt(ID.getText()));
-			
+
 			customer.setTotal(Integer.parseInt(total.getText()));
 			customer.setPaid(Integer.parseInt(custPaid.getText()));
 			customer.setId(Integer.valueOf(ID.getText()));
@@ -96,7 +96,7 @@ public class AddView implements Initializable {
 
 	}
 
-	public void setForEdit(int id, LocalDate lDate, String custName, int cBur, int cmee, int cp, int custTotal,
+	public void setForEdit(int id, LocalDate lDate, String custName, float cBur, float cmee, float cp, int custTotal,
 			int cusPaid, String update) {
 		ID.setText(String.valueOf(id));
 		date.setText(String.valueOf(lDate));

@@ -42,13 +42,13 @@ public class MainView implements Initializable {
 	private TableColumn<TableConstructor, String> colName;
 
 	@FXML
-	private TableColumn<TableConstructor, Integer> colBurm;
+	private TableColumn<TableConstructor, Float> colBurm;
 
 	@FXML
-	private TableColumn<TableConstructor, Integer> colCmee;
+	private TableColumn<TableConstructor, Float> colCmee;
 
 	@FXML
-	private TableColumn<TableConstructor, Integer> colCp;
+	private TableColumn<TableConstructor, Float> colCp;
 
 	@FXML
 	private TableColumn<TableConstructor, Integer> amBurma;
@@ -84,9 +84,9 @@ public class MainView implements Initializable {
 		colID.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("id"));
 		colDate.setCellValueFactory(new PropertyValueFactory<TableConstructor, LocalDateTime>("i_date"));
 		colName.setCellValueFactory(new PropertyValueFactory<TableConstructor, String>("i_name"));
-		colBurm.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("burma"));
-		colCmee.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("cmee"));
-		colCp.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("cp"));
+		colBurm.setCellValueFactory(new PropertyValueFactory<TableConstructor, Float>("burma"));
+		colCmee.setCellValueFactory(new PropertyValueFactory<TableConstructor, Float>("cmee"));
+		colCp.setCellValueFactory(new PropertyValueFactory<TableConstructor, Float>("cp"));
 		amBurma.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("multBurma"));
 		amCmee.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("multCmee"));
 		amCp.setCellValueFactory(new PropertyValueFactory<TableConstructor, Integer>("multCp"));
@@ -119,9 +119,8 @@ public class MainView implements Initializable {
 						tableView.getSelectionModel().getSelectedItem().getCmee(),
 						tableView.getSelectionModel().getSelectedItem().getCp(),
 						tableView.getSelectionModel().getSelectedItem().getTotal(),
-						tableView.getSelectionModel().getSelectedItem().getPaid(),
-						"Update");
-						
+						tableView.getSelectionModel().getSelectedItem().getPaid(), "Update");
+
 				Scene scene = new Scene(root);
 				stage.setScene(scene);
 				stage.show();

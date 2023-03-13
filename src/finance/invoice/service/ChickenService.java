@@ -19,9 +19,9 @@ public class ChickenService extends MySqlDB {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM chicken");
 			while (rs.next()) {
-				rs.getInt("burma");
-				rs.getInt("cmee");
-				rs.getInt("cp");
+				rs.getDouble("burma");
+				rs.getDouble("cmee");
+				rs.getDouble("cp");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -33,9 +33,9 @@ public class ChickenService extends MySqlDB {
 	public void add(Connection con, Chicken chicken) {
 		try {
 			PreparedStatement prep = con.prepareStatement(cInsert, Statement.RETURN_GENERATED_KEYS);
-			prep.setInt(1, chicken.getBurma());
-			prep.setInt(2, chicken.getCmee());
-			prep.setInt(3, chicken.getCp());
+			prep.setDouble(1, chicken.getBurma());
+			prep.setDouble(2, chicken.getCmee());
+			prep.setDouble(3, chicken.getCp());
 			prep.setInt(4, 1);
 			prep.executeUpdate();
 		} catch (SQLException e) {
@@ -48,9 +48,9 @@ public class ChickenService extends MySqlDB {
 		PreparedStatement prep;
 		try {
 			prep = con.prepareStatement(cUpdate);
-			prep.setInt(1, chicken.getBurma());
-			prep.setInt(2, chicken.getCmee());
-			prep.setInt(3, chicken.getCp());
+			prep.setDouble(1, chicken.getBurma());
+			prep.setDouble(2, chicken.getCmee());
+			prep.setDouble(3, chicken.getCp());
 			prep.setInt(4, chicken.getId());
 			prep.executeUpdate();
 		} catch (SQLException e) {

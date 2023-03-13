@@ -91,7 +91,7 @@ public class MySqlDB implements Repository {
 	@Override
 	public ObservableList<TableConstructor> joinTable() {
 		// TODO Auto-generated method stub
-		String bothTable = "SELECT finance.id AS id, i_date, i_name, burma, cmee, cp, rate, total, paid FROM finance INNER JOIN chicken ON finance.id = chicken.id;";
+		String bothTable = "SELECT finance.id AS id, i_date, i_name, burma, cmee, cp, total, paid FROM finance INNER JOIN chicken ON finance.id = chicken.id;";
 		ObservableList<TableConstructor> obList = FXCollections.observableArrayList();
 
 		Operate op = new Operate();
@@ -104,9 +104,9 @@ public class MySqlDB implements Repository {
 				int multi = rs.getInt("burma") * 200;
 				System.out.println(multi);
 				tcConstructor = new TableConstructor(rs.getInt("id"), rs.getDate("i_date").toLocalDate(),
-						rs.getString("i_name"), rs.getInt("burma"), rs.getInt("cmee"), rs.getInt("cp"),
-						op.multipile(rs.getInt("burma")), op.multipile(rs.getInt("cmee")),
-						op.multipile(rs.getInt("cp")), rs.getInt("rate"), rs.getInt("total"), rs.getInt("paid"));
+						rs.getString("i_name"), rs.getFloat("burma"), rs.getFloat("cmee"), rs.getFloat("cp"),
+						op.multipile(rs.getFloat("burma")), op.multipile(rs.getFloat("cmee")),
+						op.multipile(rs.getFloat("cp")), rs.getInt("total"), rs.getInt("paid"));
 
 				obList.add(tcConstructor);
 			}
