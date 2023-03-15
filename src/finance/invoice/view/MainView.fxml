@@ -3,105 +3,118 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Blend?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finance.invoice.view.MainView">
+<AnchorPane prefHeight="648.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finance.invoice.view.MainView">
    <children>
-      <HBox prefHeight="130.0" prefWidth="1069.0">
-         <children>
-            <Label prefHeight="100.0" prefWidth="497.0" text="Finance &amp; Invoice">
-               <font>
-                  <Font name="System Bold" size="39.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <HBox.margin>
-                  <Insets bottom="10.0" left="20.0" top="10.0" />
-               </HBox.margin>
-            </Label>
-            <HBox alignment="CENTER_RIGHT" prefHeight="115.0" prefWidth="521.0">
-               <children>
-                  <Label fx:id="datetime" accessibleRole="IMAGE_VIEW" alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="223.0" text="Date &amp; Time" textAlignment="JUSTIFY">
-                     <font>
-                        <Font name="Ebrima Bold" size="17.0" />
-                     </font>
-                  </Label>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+      <Label prefHeight="100.0" prefWidth="497.0" text="Finance &amp; Invoice">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Label fx:id="datetime" accessibleRole="IMAGE_VIEW" alignment="CENTER" contentDisplay="RIGHT" layoutX="16.0" layoutY="623.0" prefHeight="22.0" prefWidth="202.0" text="Date &amp; Time" textAlignment="JUSTIFY">
+         <font>
+            <Font name="Ebrima" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="444.0" layoutY="74.0" prefHeight="26.0" prefWidth="113.0" text="Burma - 5000">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="601.0" layoutY="74.0" prefHeight="26.0" prefWidth="113.0" text="Cmee - 6000">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="764.0" layoutY="74.0" prefHeight="26.0" prefWidth="89.0" text="CP - 5000">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <TabPane fx:id="tabPane" layoutX="13.0" layoutY="107.0" prefHeight="516.0" prefWidth="840.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tabBuy" text="Buy">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="465.0" prefWidth="1051.0">
                      <children>
-                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#addNew" prefHeight="25.0" prefWidth="80.0" text="Add">
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#edit" prefHeight="25.0" prefWidth="80.0" text="Edit">
-                           <VBox.margin>
-                              <Insets bottom="10.0" />
-                           </VBox.margin></Button>
-                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="80.0" text="Delete">
-                           <VBox.margin>
-                              <Insets bottom="10.0" />
-                           </VBox.margin>
-                        </Button>
+                        <TableView fx:id="tableView" layoutX="-1.0" layoutY="6.0" prefHeight="435.0" prefWidth="842.0">
+                          <columns>
+                            <TableColumn fx:id="colID" prefWidth="42.0" text="No." />
+                              <TableColumn fx:id="colDate" prefWidth="95.0" text="Date &amp; Time" />
+                              <TableColumn fx:id="colName" prefWidth="117.0" text="Name" />
+                              <TableColumn prefWidth="111.0" text="Count">
+                                 <columns>
+                                    <TableColumn fx:id="colBurm" prefWidth="55.0" text="Burma" />
+                                    <TableColumn fx:id="colCmee" prefWidth="47.0" text="Cmee" />
+                                    <TableColumn fx:id="colCp" prefWidth="40.0" text="CP" />
+                                 </columns>
+                              </TableColumn>
+                              <TableColumn minWidth="44.0" prefWidth="169.0" text="Ammount">
+                                 <columns>
+                                    <TableColumn fx:id="amBurma" text="Burma" />
+                                    <TableColumn fx:id="amCmee" text="Cmee" />
+                                    <TableColumn fx:id="amCp" text="CP" />
+                                 </columns>
+                              </TableColumn>
+                              <TableColumn fx:id="colTotal" prefWidth="104.0" text="Total Ammount" />
+                              <TableColumn fx:id="colPaid" minWidth="7.0" prefWidth="101.0" text="Paid" />
+                          </columns>
+                           <effect>
+                              <Blend mode="MULTIPLY" />
+                           </effect>
+                        </TableView>
+                        <Button contentDisplay="CENTER" layoutX="568.0" layoutY="448.0" mnemonicParsing="false" onAction="#addNew" prefHeight="25.0" prefWidth="80.0" text="Add" />
+                        <Button contentDisplay="CENTER" layoutX="656.0" layoutY="448.0" mnemonicParsing="false" onAction="#edit" prefHeight="25.0" prefWidth="80.0" text="Edit" />
+                        <Button contentDisplay="CENTER" layoutX="746.0" layoutY="448.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="80.0" text="Delete" />
                      </children>
-                  </VBox>
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-      <VBox prefHeight="83.0" prefWidth="848.0">
-         <children>
-            <Label prefHeight="26.0" prefWidth="172.0" text="Burma - 5000">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
-            <Label prefHeight="26.0" prefWidth="172.0" text="Cmee - 6000">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
-            <Label prefHeight="26.0" prefWidth="172.0" text="CP - 5000">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
-         </children>
-         <VBox.margin>
-            <Insets bottom="10.0" left="20.0" right="20.0" />
-         </VBox.margin>
-      </VBox>
-      <TableView fx:id="tableView" prefHeight="472.0" prefWidth="821.0">
-        <columns>
-          <TableColumn fx:id="colID" prefWidth="42.0" text="No." />
-            <TableColumn fx:id="colDate" prefWidth="95.0" text="Date &amp; Time" />
-            <TableColumn fx:id="colName" prefWidth="117.0" text="Name" />
-            <TableColumn prefWidth="111.0" text="Count">
-               <columns>
-                  <TableColumn fx:id="colBurm" prefWidth="55.0" text="Burma" />
-                  <TableColumn fx:id="colCmee" prefWidth="47.0" text="Cmee" />
-                  <TableColumn fx:id="colCp" prefWidth="40.0" text="CP" />
-               </columns>
-            </TableColumn>
-            <TableColumn minWidth="44.0" prefWidth="169.0" text="Ammount">
-               <columns>
-                  <TableColumn fx:id="amBurma" text="Burma" />
-                  <TableColumn fx:id="amCmee" text="Cmee" />
-                  <TableColumn fx:id="amCp" text="CP" />
-               </columns>
-            </TableColumn>
-            <TableColumn fx:id="colTotal" prefWidth="104.0" text="Total Ammount" />
-            <TableColumn fx:id="colPaid" minWidth="7.0" prefWidth="71.0" text="Paid" />
-        </columns>
-         <effect>
-            <Blend mode="MULTIPLY" />
-         </effect>
-      </TableView>
-      <VBox prefHeight="15.0" prefWidth="698.0" />
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tabSell" text="Sell">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableView1" layoutX="-1.0" layoutY="6.0" prefHeight="435.0" prefWidth="842.0">
+                           <columns>
+                              <TableColumn fx:id="colID1" prefWidth="42.0" text="No." />
+                              <TableColumn fx:id="colDate1" prefWidth="95.0" text="Date &amp; Time" />
+                              <TableColumn fx:id="colName1" prefWidth="117.0" text="Name" />
+                              <TableColumn prefWidth="111.0" text="Count">
+                                 <columns>
+                                    <TableColumn fx:id="colBurm1" prefWidth="55.0" text="Burma" />
+                                    <TableColumn fx:id="colCmee1" prefWidth="47.0" text="Cmee" />
+                                    <TableColumn fx:id="colCp1" prefWidth="40.0" text="CP" />
+                                 </columns>
+                              </TableColumn>
+                              <TableColumn minWidth="44.0" prefWidth="169.0" text="Ammount">
+                                 <columns>
+                                    <TableColumn fx:id="amBurma1" text="Burma" />
+                                    <TableColumn fx:id="amCmee1" text="Cmee" />
+                                    <TableColumn fx:id="amCp1" text="CP" />
+                                 </columns>
+                              </TableColumn>
+                              <TableColumn fx:id="colTotal1" prefWidth="104.0" text="Total Ammount" />
+                              <TableColumn fx:id="colPaid1" minWidth="7.0" prefWidth="101.0" text="Paid" />
+                           </columns>
+                           <effect>
+                              <Blend mode="MULTIPLY" />
+                           </effect>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
-</VBox>
+</AnchorPane>

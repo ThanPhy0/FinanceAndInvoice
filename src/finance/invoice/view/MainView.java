@@ -8,7 +8,10 @@ import java.util.ResourceBundle;
 
 import finance.invoice.entity.TableConstructor;
 import finance.invoice.service.MySqlDB;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,6 +19,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,6 +31,15 @@ public class MainView implements Initializable {
 
 	ConfigView configView;
 	MySqlDB mySqlDb;
+
+	@FXML
+	private TabPane tabPane;
+
+	@FXML
+	private Tab tabBuy;
+
+	@FXML
+	private Tab tabSell;
 
 	@FXML
 	private Label datetime;
